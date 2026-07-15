@@ -16,7 +16,7 @@
       <stop offset="100%" stop-color="#7e8a99"/>
     </linearGradient>
   </defs>
-  <rect width="1024" height="1024" rx="170" fill="url(#bgGlow)"/>
+  
 
   <!-- letras em itálico (skew) com extrusão -->
   <g transform="translate(512 512)">
