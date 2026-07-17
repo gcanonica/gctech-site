@@ -17,6 +17,10 @@
   <meta property="og:image" content="https://gctech.pro/assets/logo-original.png" />
   <meta property="og:url" content="https://gctech.pro/" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" />
+
   <link rel="stylesheet" href="css/style.css" />
 
   <!-- Dados estruturados para o Google (negócio local sem loja física) -->
@@ -92,6 +96,7 @@
   <main>
     <!-- HERO -->
     <section class="hero">
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
       <div class="container hero-inner">
         <p class="hero-badge">⚡ Atendimento em Rio Branco do Sul, Itaperuçu e Colombo — PR</p>
         <h1>Assistência técnica <span class="accent">que vai até você</span></h1>
@@ -258,5 +263,6 @@
   </a>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>
