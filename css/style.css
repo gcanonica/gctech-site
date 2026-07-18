@@ -143,6 +143,21 @@ h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 8px; }
 .card-link { color: var(--blue-bright); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
 .card-link:hover { text-decoration: underline; }
 
+/* ===== Planos (cards de preço sem valor fixo) ===== */
+.card-highlight {
+  border-color: var(--blue-bright);
+  background: linear-gradient(180deg, rgba(46, 94, 170, 0.14), var(--surface) 60%);
+}
+.card-badge {
+  display: inline-block; align-self: flex-start;
+  padding: 4px 10px; margin-bottom: 2px;
+  border-radius: 999px; background: var(--blue-bright); color: #08131f;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase;
+}
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 4px 0 6px; }
+.plan-features li { font-size: 0.9rem; color: var(--text); padding-left: 22px; position: relative; }
+.plan-features li::before { content: "\2713"; position: absolute; left: 0; color: var(--blue-bright); font-weight: 700; }
+
 /* ===== Passos ===== */
 .steps {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
