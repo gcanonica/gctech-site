@@ -67,6 +67,30 @@ h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 8px; }
 }
 .nav a.nav-active:hover { color: var(--blue-bright); }
 
+/* ===== Menu mobile (hambúrguer) ===== */
+.nav-toggle {
+  display: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  width: 40px; height: 40px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg-alt); cursor: pointer; padding: 0;
+}
+.nav-toggle-bar {
+  width: 18px; height: 2px; border-radius: 2px; background: var(--silver);
+  transition: transform 0.25s var(--ease-out-expo), opacity 0.2s;
+}
+.nav-toggle.open .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle.open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav { display: none; flex-direction: column; background: var(--bg-alt); border-top: 1px solid var(--border); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  padding: 14px 20px; color: var(--text); text-decoration: none; font-size: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover, .mobile-nav a:focus-visible { color: var(--heading); background: var(--surface); }
+.mobile-nav a.nav-active { color: var(--blue-bright); font-weight: 600; }
+
 /* ===== Botões ===== */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -256,6 +280,7 @@ h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 8px; }
   .card { transition: border-color 0.2s; }
   .card::before { display: none; }
   .whats-float::before { animation: none; opacity: 0; }
+  .nav-toggle-bar { transition: none; }
   .reveal, .reveal.in-view {
     opacity: 1; transform: none; transition: none;
   }
@@ -265,6 +290,10 @@ h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 8px; }
 @media (max-width: 700px) {
   .nav { display: none; }
   .header-inner { justify-content: space-between; }
+  .nav-toggle { display: flex; }
   .hero { padding: 60px 0 50px; }
   .hero-trust { flex-direction: column; gap: 8px; }
+}
+@media (min-width: 701px) {
+  .mobile-nav { display: none !important; }
 }

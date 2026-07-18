@@ -133,9 +133,46 @@
     rafId = requestAnimationFrame(step);
   }
 
+  function initMobileNav() {
+    var toggle = document.getElementById("nav-toggle");
+    var menu = document.getElementById("mobile-nav");
+    if (!toggle || !menu) return;
+
+    function closeMenu() {
+      menu.classList.remove("open");
+      toggle.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Abrir menu");
+    }
+
+    function openMenu() {
+      menu.classList.add("open");
+      toggle.classList.add("open");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Fechar menu");
+    }
+
+    toggle.addEventListener("click", function () {
+      if (menu.classList.contains("open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 700) closeMenu();
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initReveal();
     initCardTilt();
     initHeroCanvas();
+    initMobileNav();
   });
 })();
