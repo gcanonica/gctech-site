@@ -118,6 +118,7 @@ h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 8px; }
 
 /* ===== Cards de serviço ===== */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; perspective: 1200px; }
+.grid + .section-sub, .steps + .section-sub, .chips + .section-sub { margin-top: 28px; }
 .card {
   position: relative; overflow: hidden;
   background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
