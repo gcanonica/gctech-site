@@ -23,10 +23,10 @@ Concluída.
 - Canonicals existentes preservados; a normalização observada do GitHub Pages mantém HTTPS, domínio sem `www` e barra final nas páginas de diretório.
 - Twitter Cards adicionados às páginas existentes.
 - OG image passou a declarar dimensões.
-- Breadcrumbs visíveis adicionados a `/empresas/` e `/sites/`.
+- Breadcrumbs visíveis não são usados: a navegação principal já apresenta as áreas do site. Os dados estruturados de `BreadcrumbList` permanecem quando úteis para mecanismos de busca.
 - Configuração pública de negócio centralizada em [`assets/seo-config.json`](assets/seo-config.json) para orientar futuras gerações de metadata/schema.
 - JSON-LD das novas páginas usa `Organization`, `LocalBusiness`, `Service` e `BreadcrumbList`, com dados reais disponíveis no projeto.
-- Links de navegação passaram a incluir a nova área de assistência técnica.
+- A Home permanece como a landing page principal de assistência técnica.
 
 ## Fase 2 — Páginas principais
 
@@ -34,12 +34,11 @@ Concluída.
 
 Páginas criadas sem alterar as URLs existentes:
 
-- `/assistencia-tecnica/`
 - `/empresas/suporte-ti/`
 - `/sites/criacao-de-sites/`
 - `/sites/sites-sob-medida/`
 
-Cada página possui title, meta description, canonical, Open Graph, Twitter Card, um H1, headings hierárquicos, breadcrumb visível, JSON-LD e CTA para WhatsApp. O conteúdo foi escrito para as intenções definidas, sem avaliações, números, cases ou credenciais inventados.
+A Home (`/`) concentra a landing de assistência técnica. A antiga URL `/assistencia-tecnica/` foi mantida apenas como alias com redirecionamento para a Home, usando `noindex,follow`, para evitar duas páginas com a mesma intenção e conteúdo. As demais páginas de serviço possuem title, meta description, canonical, Open Graph, Twitter Card, um H1, headings hierárquicos, JSON-LD e CTA para WhatsApp. O conteúdo foi escrito para as intenções definidas, sem avaliações, números, cases ou credenciais inventados.
 
 ## Validação executada
 
