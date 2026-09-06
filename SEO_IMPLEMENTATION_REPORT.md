@@ -60,3 +60,7 @@ Cada página possui title, meta description, canonical, Open Graph, Twitter Card
 ## Próximo passo recomendado
 
 Configurar a propriedade do domínio no Google Search Console, enviar o sitemap e aguardar dados reais de consultas por algumas semanas. Só então priorizar novas páginas, conteúdos e eventuais hubs locais com base em impressões, cliques, CTR e leads.
+
+## Acompanhamento posterior às Fases 0–2
+
+Após a indexação inicial, o Google Analytics 4 foi preparado com o fluxo Web `G-071CJDZME7`. O tag está presente nas páginas públicas e registra apenas eventos sem dados pessoais: `click_whatsapp`, `click_phone`, `request_quote` e `view_service`. A vinculação GA4 ↔ Search Console ainda deve ser confirmada no painel após os primeiros dados.
