@@ -3,22 +3,19 @@
 
   var measurementId = "G-071CJDZME7";
   window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag("js", new Date());
-  gtag("config", measurementId);
-
-  var tag = document.createElement("script");
-  tag.async = true;
-  tag.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
-  document.head.appendChild(tag);
+  if (typeof window.gtag !== "function") {
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId);
+  }
 
   function locationName(link) {
     return link.getAttribute("aria-label") || link.textContent.trim().replace(/\s+/g, " ").slice(0, 80) || "link";
   }
 
   document.addEventListener("click", function (event) {
-    var link = event.target.closest("a");
+    var target = event.target;
+    var link = target && target.closest ? target.closest("a") : null;
     if (!link) return;
     var label = locationName(link);
     var isWhatsApp = link.href.indexOf("wa.me/") !== -1 || link.href.indexOf("whatsapp.com/") !== -1;
