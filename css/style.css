@@ -37,6 +37,11 @@ body {
 
 .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
 
+.breadcrumbs { max-width: 1080px; margin: 0 auto; padding: 18px 20px 0; color: var(--text); font-size: 0.82rem; }
+.breadcrumbs a { color: var(--silver); text-decoration: none; }
+.breadcrumbs a:hover, .breadcrumbs a:focus-visible { color: var(--heading); text-decoration: underline; }
+.breadcrumbs span[aria-current="page"] { color: var(--blue-bright); }
+
 h1, h2, h3 { font-family: var(--font-display); color: var(--heading); line-height: 1.2; }
 h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 8px; }
 

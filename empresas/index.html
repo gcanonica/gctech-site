@@ -15,7 +15,13 @@
   <meta property="og:description" content="Computadores, redes, CFTV, impressoras, celulares e sites num contrato só, com SLA garantido e sob medida para o seu negócio." />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:image" content="https://gctech.pro/assets/logo-original.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
   <meta property="og:url" content="https://gctech.pro/empresas/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GC Tech — Suporte de TI para Empresas" />
+  <meta name="twitter:description" content="Suporte de TI, redes, CFTV e manutenção para empresas em Rio Branco do Sul, Itaperuçu e Colombo." />
+  <meta name="twitter:image" content="https://gctech.pro/assets/logo-original.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,6 +61,16 @@
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Suporte remoto" } }
       ]
     }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type":"Organization","@id":"https://gctech.pro/#organization","name":"GC Tech Assistência Técnica","url":"https://gctech.pro/","logo":"https://gctech.pro/assets/logo-original.png","sameAs":["https://www.instagram.com/gctech.pro"]},
+      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://gctech.pro/"},{"@type":"ListItem","position":2,"name":"Para sua Empresa","item":"https://gctech.pro/empresas/"}]}
+    ]
   }
   </script>
 
@@ -107,6 +123,7 @@
       </a>
       <nav class="nav">
         <a href="../">Home</a>
+        <a href="../assistencia-tecnica/">Assistência Técnica</a>
         <a href="#" class="nav-active" aria-current="page">Para sua Empresa</a>
         <a href="../sites/">Criação de Sites</a>
       </nav>
@@ -122,12 +139,14 @@
     </div>
     <nav class="mobile-nav" id="mobile-nav">
       <a href="../">Home</a>
+      <a href="../assistencia-tecnica/">Assistência Técnica</a>
       <a href="#" class="nav-active" aria-current="page">Para sua Empresa</a>
       <a href="../sites/">Criação de Sites</a>
     </nav>
   </header>
 
   <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Início</a><span aria-hidden="true"> &gt; </span><span aria-current="page">Para sua Empresa</span></nav>
     <!-- HERO -->
     <section class="hero">
       <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
