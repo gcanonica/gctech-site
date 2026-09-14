@@ -19,7 +19,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap" />
 
   <link rel="stylesheet" href="css/style.css" />
 
@@ -75,9 +75,9 @@
 <body>
 
   <header class="header">
-    <div class="container header-inner">
+    <div class="nav-pill">
       <a href="#" class="brand" aria-label="GC Tech Assistência Técnica">
-        <img class="brand-mark" src="assets/favicon.png" alt="Logo GC Tech" width="40" height="40" />
+        <img class="brand-mark" src="assets/favicon.png" alt="Logo GC Tech" width="36" height="36" />
         <span class="brand-text">GC <strong>Tech</strong></span>
       </a>
       <nav class="nav">
@@ -105,7 +105,7 @@
   <main>
     <!-- HERO -->
     <section class="hero">
-      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-inner">
         <p class="hero-badge">⚡ Atendimento em Rio Branco do Sul, Itaperuçu e Colombo — PR</p>
         <h1>Assistência técnica <span class="accent">que vai até você</span></h1>
@@ -131,9 +131,11 @@
 
     <!-- SERVIÇOS -->
     <section id="servicos" class="section">
-      <div class="container">
-        <h2>Serviços</h2>
-        <p class="section-sub">Tudo o que sua casa ou empresa precisa em tecnologia, num só contato.</p>
+      <div class="container bento">
+        <div class="bento-intro">
+          <h2>Serviços</h2>
+          <p class="section-sub">Tudo o que sua casa ou empresa precisa em tecnologia, num só contato.</p>
+        </div>
         <div class="grid">
           <article class="card">
             <div class="card-icon" aria-hidden="true">
@@ -251,9 +253,55 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="#" class="brand" aria-label="GC Tech Assistência Técnica">
+          <img class="brand-mark" src="assets/favicon.png" alt="Logo GC Tech" width="36" height="36" />
+          <span class="brand-text">GC <strong>Tech</strong></span>
+        </a>
+        <p class="footer-brand-text">Assistência técnica que vai até você: CFTV, redes, computadores, celulares e sites.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">CFTV e Câmeras</a></li>
+          <li><a href="#servicos">Redes e Wi-Fi</a></li>
+          <li><a href="#servicos">Computadores e Celulares</a></li>
+          <li><a href="sites/">Criação de Sites</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="empresas/">Para sua Empresa</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Atendemos</h4>
+        <ul>
+          <li><span>Rio Branco do Sul - PR</span></li>
+          <li><span>Itaperuçu - PR</span></li>
+          <li><span>Colombo - PR</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-cta">
+      <div>
+        <strong>Precisa de atendimento agora?</strong>
+        <p>Fale com a gente pelo WhatsApp e receba um orçamento rápido.</p>
+      </div>
+      <a class="btn btn-whats" href="https://wa.me/5541995372084?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20GC%20Tech%20e%20preciso%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.7 14.1c-.2.7-1.4 1.3-1.9 1.4-.5 0-1.1.2-3.7-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4-.1.7.5.2.6.8 2.1.9 2.2.1.2.1.3 0 .5-.1.2-.2.4-.3.5l-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1.1-1.3c.2-.3.5-.2.8-.1.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.1.1.7-.1 1.5Z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+
+    <div class="container footer-bottom">
       <p>© <span id="year">2026</span> GC Tech Assistência Técnica — Rio Branco do Sul, Itaperuçu e Colombo, PR</p>
-      <div class="footer-links">
+      <div class="footer-social">
         <a href="https://www.instagram.com/gceletronicaeinformatica" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" class="icon"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg>
           @gceletronicaeinformatica

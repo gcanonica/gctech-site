@@ -59,80 +59,6 @@
     });
   }
 
-  function initHeroCanvas() {
-    var canvas = document.getElementById("hero-canvas");
-    if (!canvas || prefersReducedMotion) return;
-
-    var hero = canvas.closest(".hero");
-    var ctx = canvas.getContext("2d");
-    var width, height, particles, rafId, resizeTimer;
-    var linkDistance = 130;
-
-    function resize() {
-      width = canvas.width = hero.clientWidth;
-      height = canvas.height = hero.clientHeight;
-      var count = Math.min(70, Math.round((width * height) / 18000));
-      particles = [];
-      for (var i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35
-        });
-      }
-    }
-
-    function step() {
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = "rgba(125, 178, 255, 0.6)";
-
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
-        ctx.fill();
-
-        for (var j = i + 1; j < particles.length; j++) {
-          var q = particles[j];
-          var dx = p.x - q.x;
-          var dy = p.y - q.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < linkDistance) {
-            ctx.strokeStyle = "rgba(77, 138, 239, " + (0.25 * (1 - dist / linkDistance)) + ")";
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.stroke();
-          }
-        }
-      }
-      rafId = requestAnimationFrame(step);
-    }
-
-    window.addEventListener("resize", function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(resize, 200);
-    });
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        cancelAnimationFrame(rafId);
-      } else {
-        rafId = requestAnimationFrame(step);
-      }
-    });
-
-    resize();
-    rafId = requestAnimationFrame(step);
-  }
-
   function initMobileNav() {
     var toggle = document.getElementById("nav-toggle");
     var menu = document.getElementById("mobile-nav");
@@ -172,7 +98,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     initReveal();
     initCardTilt();
-    initHeroCanvas();
     initMobileNav();
   });
 })();
