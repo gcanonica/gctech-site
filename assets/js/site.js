@@ -6,41 +6,6 @@
   var menu = document.querySelector("[data-mobile-menu]");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function initHeroVariant() {
-    var path = window.location.pathname;
-    var isPreviewVariant = path.indexOf("/variantes/") !== -1;
-    var variant = path.indexOf("/variantes/resumo/") !== -1 ? "summary" : path.indexOf("/variantes/expansao/") !== -1 || document.body.hasAttribute("data-panel-expand") ? "expand" : "";
-    if (!variant) return;
-
-    document.body.classList.add("variant-" + variant);
-    var product = document.querySelector(".hero-product");
-    if (!product) return;
-
-    if (isPreviewVariant) {
-      var notice = document.createElement("p");
-      notice.className = "variant-notice";
-      notice.textContent = variant === "summary" ? "Variante A · painel resumido" : "Variante B · painel expansível";
-      notice.setAttribute("aria-label", notice.textContent);
-      document.querySelector(".hero .shell").appendChild(notice);
-    }
-
-    if (variant !== "expand") return;
-
-    var toolbar = product.querySelector(".product-toolbar");
-    if (!toolbar) return;
-    var button = document.createElement("button");
-    button.className = "panel-toggle";
-    button.type = "button";
-    button.setAttribute("aria-expanded", "false");
-    button.textContent = "Expandir painel";
-    toolbar.appendChild(button);
-    button.addEventListener("click", function () {
-      var open = product.classList.toggle("is-open");
-      button.setAttribute("aria-expanded", String(open));
-      button.textContent = open ? "Recolher painel" : "Expandir painel";
-    });
-  }
-
   function initServiceLead() {
     var path = window.location.pathname;
     var leads = {
@@ -103,6 +68,15 @@
       clone.setAttribute("aria-hidden", "true");
       track.appendChild(clone);
     }
+
+    function updateMarqueeDistance() {
+      var width = group.getBoundingClientRect().width;
+      if (width > 0) track.style.setProperty("--gc-marquee-distance", width + "px");
+    }
+
+    updateMarqueeDistance();
+    window.addEventListener("load", updateMarqueeDistance, { once: true });
+    window.addEventListener("resize", updateMarqueeDistance, { passive: true });
   }
 
   function closeMenu() {
@@ -131,7 +105,6 @@
     });
   }
 
-  initHeroVariant();
   initServiceLead();
   normalizeInternalHomeLinks();
   initLeadChoices();
