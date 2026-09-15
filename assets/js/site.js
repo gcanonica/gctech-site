@@ -44,12 +44,12 @@
   function initServiceLead() {
     var path = window.location.pathname;
     var leads = {
-      "/cftv/": { label: "Agendar avaliação de CFTV", message: "Olá! Quero agendar uma avaliação de CFTV." },
-      "/redes-wifi/": { label: "Diagnosticar meu Wi-Fi", message: "Olá! Meu Wi-Fi está com problemas e quero fazer um diagnóstico." },
-      "/computadores/": { label: "Agendar diagnóstico", message: "Olá! Meu computador ou notebook precisa de diagnóstico." },
-      "/dispositivos/": { label: "Pedir orçamento de reparo", message: "Olá! Preciso de orçamento para reparar um celular, tablet ou videogame." },
-      "/empresas/": { label: "Agendar diagnóstico de TI", message: "Olá! Quero agendar um diagnóstico de TI para minha empresa." },
-      "/sites/": { label: "Pedir proposta de site", message: "Olá! Quero pedir uma proposta de site para meu negócio." }
+      "/cftv/": { label: "Agendar avaliação de CFTV", message: "Olá! Quero agendar uma avaliação de CFTV. É para uma casa ou empresa e quantos ambientes preciso monitorar?" },
+      "/redes-wifi/": { label: "Diagnosticar meu Wi-Fi", message: "Olá! Meu Wi-Fi está com problemas. Em quais ambientes o sinal falha e quantos pontos preciso conectar?" },
+      "/computadores/": { label: "Agendar diagnóstico", message: "Olá! Meu computador ou notebook precisa de diagnóstico. Qual é o modelo e o que aconteceu?" },
+      "/dispositivos/": { label: "Pedir orçamento de reparo", message: "Olá! Preciso de orçamento para reparar meu celular, tablet, videogame ou controle. Vou enviar o modelo e o problema." },
+      "/empresas/": { label: "Agendar diagnóstico gratuito", message: "Olá! Quero agendar um diagnóstico gratuito de TI. Quantas pessoas e equipamentos a empresa possui e qual é o principal problema hoje?" },
+      "/sites/": { label: "Pedir proposta de site", message: "Olá! Quero pedir uma proposta de site. Qual é o meu negócio, objetivo e prazo para colocar no ar?" }
     };
     var key = Object.keys(leads).find(function (route) { return path.indexOf(route) !== -1; });
     if (!key) return;
@@ -68,12 +68,28 @@
   }
 
   function normalizeInternalHomeLinks() {
-    var homeHref = "/?v=2026091418";
+    var homeHref = "/";
     document.querySelectorAll("a.brand, .footer-bottom a").forEach(function (link) {
       link.setAttribute("href", homeHref);
     });
-    document.querySelectorAll('nav a[href$="#servicos"]').forEach(function (link) {
-      link.setAttribute("href", homeHref);
+    document.querySelectorAll('a[href*="?v=2026091418"]').forEach(function (link) {
+      var label = link.textContent.trim().toLowerCase();
+      link.setAttribute("href", link.closest("nav") && /serviços|servicos/.test(label) ? "/#servicos" : homeHref);
+    });
+    document.querySelectorAll("nav a").forEach(function (link) {
+      var label = link.textContent.trim().toLowerCase();
+      if (/^serviços$|^servicos$|todos os serviços|todos os servicos/.test(label)) {
+        link.setAttribute("href", "/#servicos");
+      }
+    });
+  }
+
+  function initLeadChoices() {
+    document.querySelectorAll("[data-lead-message]").forEach(function (link) {
+      var message = link.getAttribute("data-lead-message");
+      if (!message) return;
+      link.setAttribute("href", "https://wa.me/5541995372084?text=" + encodeURIComponent(message));
+      if (!link.getAttribute("aria-label")) link.setAttribute("aria-label", link.textContent.trim());
     });
   }
 
@@ -118,6 +134,7 @@
   initHeroVariant();
   initServiceLead();
   normalizeInternalHomeLinks();
+  initLeadChoices();
   initMarquee();
 
   function updateHeader() {
