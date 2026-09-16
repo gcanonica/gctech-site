@@ -71,7 +71,7 @@ img { max-width: 100%; }
 .hero::after { display: none; }
 .hero .shell { position: relative; z-index: 1; min-width: 0; padding-top: 80px; padding-bottom: 80px; }
 .eyebrow, .kicker, .mono-label { font-family: "GC Mono", ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
-.eyebrow { display: inline-flex; gap: 10px; align-items: center; margin-bottom: 30px; color: var(--muted-strong); }
+.eyebrow { display: inline-flex; gap: 10px; align-items: center; margin-bottom: 34px; color: var(--muted-strong); }
 .eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--blue); }
 .hero h1, .service-hero h1 { max-width: 1040px; margin: 0; font-size: clamp(48px, 7vw, 92px); font-weight: 510; line-height: .98; letter-spacing: -.055em; }
 .hero h1 span, .service-hero h1 span { color: var(--muted); }
@@ -91,6 +91,7 @@ img { max-width: 100%; }
 .kicker { color: var(--blue-soft); }
 .section-head h2, .split-copy h2, .cta-band h2 { margin: 0; font-size: clamp(38px, 5vw, 64px); font-weight: 500; line-height: 1.06; letter-spacing: -.045em; }
 .section-head p { max-width: 630px; margin: 20px 0 0; color: var(--muted); font-size: 18px; }
+.split-copy .kicker, .cta-band .kicker { display: block; margin-bottom: 20px; }
 .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .service-card { position: relative; min-height: 330px; display: flex; flex-direction: column; padding: 34px; overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: linear-gradient(145deg, rgba(20, 21, 24, .72), rgba(12, 13, 15, .92)); text-decoration: none; transition: transform 220ms var(--ease), background 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
 .service-card::before { content: ""; position: absolute; top: 22px; bottom: 22px; left: 0; width: 2px; border-radius: 2px; background: linear-gradient(180deg, transparent, var(--blue), transparent); opacity: .28; transition: opacity 220ms ease, box-shadow 220ms ease; }
@@ -154,7 +155,7 @@ img { max-width: 100%; }
 .lead-choice:hover, .lead-choice:focus-visible { color: var(--text); border-color: var(--blue); background: var(--surface-raised); transform: translateY(-1px); }
 .service-overview { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; }
 .overview-meta { position: sticky; top: 110px; align-self: start; }
-.overview-meta .kicker { display: block; margin-bottom: 18px; }
+.overview-meta .kicker { display: block; margin-bottom: 22px; }
 .overview-meta h2 { margin: 0; font-size: 32px; font-weight: 510; letter-spacing: -.03em; }
 .overview-meta p { color: var(--muted); }
 .deliverables { border-top: 1px solid var(--border); }
@@ -206,7 +207,7 @@ img { max-width: 100%; }
   .hero h1, .service-hero h1 { font-size: clamp(44px, 14vw, 62px); }
   .hero-copy { font-size: 17px; }
   .hero-actions .button { width: 100%; }
-  .section-head { gap: 18px; margin-bottom: 40px; }
+  .section-head { gap: 24px; margin-bottom: 40px; }
   .service-grid { grid-template-columns: 1fr; gap: 10px; }
   .service-card { min-height: 260px; border-right: 1px solid var(--border); padding: 26px; border-radius: 16px; }
   .proof-panel { grid-template-columns: 1fr; }
