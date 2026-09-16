@@ -1,10 +1,19 @@
 {
-  "name": "GC Tech Assistência Técnica",
+  "name": "GC Tech",
+  "cnpj": "34.259.817/0001-09",
   "url": "https://gctech.pro/",
   "telephone": "+5541995372084",
-  "logo": "https://gctech.pro/assets/logo-original.png",
+  "logo": "https://gctech.pro/assets/logo-original-transparent.webp",
   "socialProfiles": ["https://www.instagram.com/gctech.pro"],
   "serviceAreas": ["Rio Branco do Sul", "Itaperuçu", "Colombo"],
+  "metroArea": "Região Metropolitana de Curitiba",
   "country": "BR",
-  "region": "PR"
+  "region": "PR",
+  "serviceRadiusKm": 15,
+  "openingHours": {
+    "mondayToFriday": "09:00-19:00",
+    "saturday": "10:00-14:00"
+  },
+  "publicAddress": null,
+  "googleReviewUrl": null
 }

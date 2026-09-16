@@ -1,7 +1,21 @@
 # SEO Implementation Report — GC Tech
 
-Data: 06/09/2026  
-Escopo executado: **Fase 0 → Fase 1 → Fase 2**. A execução foi interrompida aqui conforme o plano; não foram criadas páginas de cidades, blog, cases ou portfolio.
+Data do registro original: 06/09/2026
+Escopo original: **Fase 0 → Fase 1 → Fase 2**.
+
+## Atualização do candidato a publicação — 16/09/2026
+
+Além das fases originais, o candidato atual inclui:
+
+- três páginas locais: `/rio-branco-do-sul/`, `/itaperucu/` e `/colombo/`, com conteúdo específico, links internos, FAQ visível e `FAQPage` coerente com o conteúdo;
+- página `/sobre/` com a experiência e a formação reais de Gustavo Canonica, responsável técnico da GC Tech, usando `Person` e `AboutPage` sem expor endereço residencial;
+- páginas de avaliações, política de privacidade e termos, sem inventar nota, depoimento ou link direto do Google Business Profile;
+- `Organization`, `WebSite` e `LocalBusiness` consolidados na Home, com os dados reais disponíveis: GC Tech, CNPJ informado, telefone, Instagram, cidades atendidas e horários;
+- logo original em WebP, favicon, dimensões e carregamento das imagens, além da correção dos ícones externos do marquee;
+- FAQ estruturado também nas páginas profundas de suporte empresarial e criação de sites;
+- `robots.txt`, `sitemap.xml`, chave pública do IndexNow, canonicals, Open Graph, Twitter Cards e metadados revisados para a publicação.
+
+Não houve commit, push ou publicação durante esta revisão. O site ainda aguarda a conferência visual e comercial do responsável antes do deploy.
 
 ## Fase 0 — Baseline
 
@@ -43,14 +57,25 @@ A Home (`/`) concentra a landing de assistência técnica. A antiga URL `/assist
 ## Validação executada
 
 - `git diff --check`: passou.
-- Busca por `gceletronicaeinformatica` nas páginas publicadas: nenhuma ocorrência restante.
+- Revisão do perfil social antigo: nenhuma ocorrência nas páginas publicadas.
 - As três páginas existentes responderam 200 no domínio público durante o baseline.
 - Redirects observados: HTTP → HTTPS; `/empresas` → `/empresas/`; `/sites` → `/sites/`.
-- Lighthouse, Unlighthouse, SiteOne e Search Console ainda não foram executados neste ambiente. Eles exigem execução/credencial externa; estão documentados para o próximo passo.
+- Lighthouse foi executado na Home local do candidato: performance 85/100, FCP 2,0 s, LCP 4,1 s, CLS 0 e TBT 50 ms. O LCP ainda deve ser conferido no domínio publicado, porque o laboratório local usa emulação e não substitui os dados reais de campo.
+- JSON-LD, FAQ visível versus schema, imagens, metadados, links internos, órfãos, sitemap e assets foram validados sem erros no candidato atual.
+- Unlighthouse, SiteOne e Search Console ainda não foram executados neste ambiente. Eles ficam para a validação pós-publicação, com o domínio e as credenciais reais.
+
+## Pendências reais antes ou depois do deploy
+
+- O nome do responsável técnico, fotos próprias, certificados e cases dependem do responsável e não foram inventados.
+- Não há faixa de preço porque a GC Tech informou que trabalha por diagnóstico e orçamento; publicar valores só deve ocorrer quando houver valores reais.
+- Headers de segurança não podem ser adicionados pelo GitHub Pages puro; exigem proxy Cloudflare ou outra hospedagem.
+- A política de privacidade e os termos foram atualizados com os dados comerciais confirmados pelo responsável; recomenda-se revisão comercial/jurídica final antes de tratá-los como documentos definitivos.
+- A página de avaliações está pronta, mas o link direto e os depoimentos reais dependem do Google Business Profile.
+- Depois da aprovação, ainda será necessário publicar, enviar o sitemap no Search Console, solicitar indexação das páginas prioritárias e executar a auditoria no domínio final.
 
 ## O que não foi feito de propósito
 
-- Nenhuma página programática por cidade.
+- Nenhuma expansão adicional por cidade além das três áreas prioritárias aprovadas.
 - Nenhum blog, case ou portfolio.
 - Nenhuma expansão nacional por nicho.
 - Nenhuma alteração de framework ou identidade visual.
