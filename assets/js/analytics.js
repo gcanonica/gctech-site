@@ -31,9 +31,7 @@
 
     if (isWhatsApp) {
       gtag("event", "whatsapp_click", { link_location: label });
-      if (link.classList.contains("btn-whats") || link.classList.contains("lead-choice") || /orçamento|diagnóstico|falar|conversar|consertar|orçar/i.test(label)) {
-        gtag("event", "request_quote", { link_location: label });
-      }
+      gtag("event", "request_quote", { link_location: label });
     }
     if (isPhone) gtag("event", "phone_click", { link_location: label });
   });
