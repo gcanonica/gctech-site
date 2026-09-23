@@ -30,17 +30,17 @@
     var isPhone = link.protocol === "tel:";
 
     if (isWhatsApp) {
-      gtag("event", "click_whatsapp", { link_location: label });
+      gtag("event", "whatsapp_click", { link_location: label });
       if (link.classList.contains("btn-whats") || link.classList.contains("lead-choice") || /orçamento|diagnóstico|falar|conversar|consertar|orçar/i.test(label)) {
         gtag("event", "request_quote", { link_location: label });
       }
     }
-    if (isPhone) gtag("event", "click_phone", { link_location: label });
+    if (isPhone) gtag("event", "phone_click", { link_location: label });
   });
 
   var serviceMatch = window.location.pathname.match(/^\/(cftv|redes-wifi|computadores|dispositivos|empresas|sites)(?:\/|$)/);
   if (serviceMatch) {
-    gtag("event", "view_service", {
+    gtag("event", "service_page_view", {
       service_path: window.location.pathname,
       service_name: serviceMatch[1]
     });
