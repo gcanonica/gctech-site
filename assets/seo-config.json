@@ -11,8 +11,8 @@
   "region": "PR",
   "serviceRadiusKm": 15,
   "openingHours": {
-    "mondayToFriday": "09:00-19:00",
-    "saturday": "10:00-14:00"
+    "mondayToFriday": "09:00-20:30",
+    "saturday": "09:00-12:00"
   },
   "publicAddress": null,
   "googleReviewUrl": "https://share.google/gNXhr9bjk9qwvq2wK"
