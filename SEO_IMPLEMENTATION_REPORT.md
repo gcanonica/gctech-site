@@ -70,7 +70,7 @@ A Home (`/`) concentra a landing de assistência técnica. A antiga URL `/assist
 - Não há faixa de preço porque a GC Tech informou que trabalha por diagnóstico e orçamento; publicar valores só deve ocorrer quando houver valores reais.
 - Headers de segurança não podem ser adicionados pelo GitHub Pages puro; exigem proxy Cloudflare ou outra hospedagem.
 - A política de privacidade e os termos foram atualizados com os dados comerciais confirmados pelo responsável; recomenda-se revisão comercial/jurídica final antes de tratá-los como documentos definitivos.
-- A página de avaliações está pronta, mas o link direto e os depoimentos reais dependem do Google Business Profile.
+- A página de avaliações agora aponta para o link oficial compartilhado do Perfil da Empresa; depoimentos reais continuam dependendo da coleta e autorização do responsável.
 - Depois da aprovação, ainda será necessário publicar, enviar o sitemap no Search Console, solicitar indexação das páginas prioritárias e executar a auditoria no domínio final.
 
 ## O que não foi feito de propósito
