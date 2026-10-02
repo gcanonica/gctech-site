@@ -1,9 +1,10 @@
 # Medição e acompanhamento — GC Tech
 
-Implementação local em 01/10/2026; depende de publicação autorizada. GA4: propriedade
+Implementação publicada em 01/10/2026 às 22:16 (Brasília), após autorização. GA4: propriedade
 552988303, tag G-071CJDZME7. Coleta somente em https://gctech.pro e após aceite de
-estatísticas. Prévias e localhost não carregam GA4. QA no domínio real deve bloquear
-Analytics antes da navegação.
+estatísticas. Prévias e localhost não carregam GA4. QA negativa no domínio real
+bloqueia Analytics antes da navegação; testes de entrega reais devem ser limitados
+e documentados para não confundir QA com clientes.
 
 ## Eventos e continuidade
 
@@ -14,6 +15,18 @@ Analytics antes da navegação.
 | service_page_view | Visita a página de serviço | Não |
 | view_home | Visita à home | Não |
 | generate_lead | Reservado para contato realmente confirmado | Não implementado |
+
+click_whatsapp foi marcado como evento principal no GA4, contado uma vez por
+sessão e sem valor monetário. Isso mede sessões com intenção, não clientes.
+Dimensões service_name e link_location foram cadastradas com escopo Evento.
+qualify_lead e close_convert_lead já existiam como eventos principais; não são
+emitidos pelo site nem sincronizados automaticamente com o atendimento.
+
+No registro privado de atendimento, contato qualificado exige conversa recebida,
+demanda identificada, serviço/região atendidos e intenção real de orçamento.
+Serviço fechado exige proposta aceita. Fechamento e pagamento têm datas e
+valores próprios; valor contratado não é receita recebida. Uma linha por
+oportunidade e datas preservadas evitam contagem duplicada das etapas.
 
 Adotado click_whatsapp para manter o nome histórico de 06/09. O nome whatsapp_click
 da versão anterior também representa intenção: considerar os dois ao consultar o
@@ -40,12 +53,13 @@ leitura: esta alteração foi feita no painel autenticado, sem alterar o app/Fir
 
 ## Pendências administrativas — OAuth atual somente leitura
 
-- Rever request_quote marcado como evento-chave e seu valor padrão de 1 USD:
-  não representa receita. Não modificar histórico nem métricas sem decisão explícita.
-- Definir custom dimensions event-scoped link_location e service_name se forem
-  necessárias nos relatórios; não têm retroatividade.
-- Publicar e validar o controle de consentimento descrito abaixo; a verificação
-  local não comprova o comportamento do site que está no ar.
+- request_quote foi desmarcado como principal; o valor antigo de 1 USD não
+  representava receita. Histórico não foi apagado nem reescrito.
+- Dimensões event-scoped link_location e service_name cadastradas; não têm retroatividade.
+- Consentimento publicado e verificado no site real: sem escolha/rejeição não
+  há coleta. Cliques controlados receberam HTTP 204 do endpoint GA4. Isso verifica
+  transporte, não garante processamento: Realtime/DebugView ainda não confirmaram
+  os eventos de QA durante a checagem inicial. Continuar a validação de ingestão.
 - Cadastro/alteração exige analytics.edit ou operação autorizada no painel. Não
   ampliar OAuth automaticamente nem usar o projeto Firebase do app.
 
@@ -64,7 +78,7 @@ leitura: esta alteração foi feita no painel autenticado, sem alterar o app/Fir
 6. Acompanhar indexação e impressões das três páginas locais. Não há promessa de
    prazo/posição. Consultar manualmente ou quando solicitado; sem automação criada.
 
-## Cookies e consentimento — implementação local
+## Cookies e consentimento — implementação publicada
 
 Banner próprio, sem biblioteca de CMP. `consent.js` precede `analytics.js` nas
 17 páginas. Sem escolha, escolha inválida/expirada ou rejeição, não há tag GA4,
