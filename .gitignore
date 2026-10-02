@@ -1,0 +1,4 @@
+.playwright-cli/
+output/playwright/
+*.har
+contatos.csv

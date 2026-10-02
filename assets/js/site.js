@@ -9,20 +9,20 @@
   function initServiceLead() {
     var path = window.location.pathname;
     var leads = {
-      "/cftv/": { label: "Agendar avaliação de CFTV", message: "Olá! Quero agendar uma avaliação de CFTV. É para uma casa ou empresa e quantos ambientes preciso monitorar?" },
-      "/redes-wifi/": { label: "Diagnosticar meu Wi-Fi", message: "Olá! Meu Wi-Fi está com problemas. Em quais ambientes o sinal falha e quantos pontos preciso conectar?" },
-      "/computadores/": { label: "Agendar diagnóstico", message: "Olá! Meu computador ou notebook precisa de diagnóstico. Qual é o modelo e o que aconteceu?" },
+      "/cftv/": { label: "Agendar avaliação de CFTV", message: "Olá! Vim pelo site da GC Tech e preciso de CFTV. Vou informar minha cidade, se é para casa ou empresa e os ambientes que quero monitorar." },
+      "/redes-wifi/": { label: "Diagnosticar meu Wi-Fi", message: "Olá! Vim pelo site da GC Tech e preciso de ajuda com a rede ou Wi-Fi. Vou informar minha cidade e onde o sinal falha." },
+      "/computadores/": { label: "Agendar diagnóstico", message: "Olá! Vim pelo site da GC Tech e preciso de diagnóstico de computador ou notebook. Vou informar minha cidade, modelo e o que aconteceu." },
       "/dispositivos/": { label: "Pedir orçamento de reparo", message: "Olá! Preciso de orçamento para reparar meu celular, tablet, videogame ou controle. Vou enviar o modelo e o problema." },
-      "/empresas/": { label: "Agendar diagnóstico gratuito", message: "Olá! Quero agendar um diagnóstico gratuito de TI. Quantas pessoas e equipamentos a empresa possui e qual é o principal problema hoje?" },
-      "/sites/": { label: "Pedir proposta de site", message: "Olá! Quero pedir uma proposta de site. Qual é o meu negócio, objetivo e prazo para colocar no ar?" }
+      "/empresas/": { label: "Agendar diagnóstico gratuito", message: "Olá! Vim pelo site da GC Tech e quero agendar um diagnóstico gratuito de TI para minha empresa. Vou informar a cidade, quantidade de equipamentos e principal problema." },
+      "/sites/": { label: "Pedir proposta de site", message: "Olá! Vim pelo site da GC Tech e quero uma proposta de site. Vou informar o tipo de negócio, objetivo e prazo desejado." }
     };
-    var key = Object.keys(leads).find(function (route) { return path.indexOf(route) !== -1; });
+    var key = Object.keys(leads).find(function (route) { return (path + "/").indexOf(route) === 0; });
     if (!key) return;
 
     var lead = leads[key];
     var href = "https://wa.me/5541995372084?text=" + encodeURIComponent(lead.message);
-    document.querySelectorAll(".service-hero .button-whatsapp, .cta-band .button-whatsapp, .nav-cta, .whatsapp-float").forEach(function (link) {
-      if (link.classList.contains("whatsapp-float")) {
+    document.querySelectorAll(".button-whatsapp, .btn-whats, .nav-cta, .whatsapp-float, .whats-float").forEach(function (link) {
+      if (link.classList.contains("whatsapp-float") || link.classList.contains("whats-float")) {
         link.setAttribute("aria-label", lead.label);
         link.setAttribute("title", lead.label);
       } else {
@@ -34,7 +34,7 @@
 
   function normalizeInternalHomeLinks() {
     var homeHref = "/";
-    document.querySelectorAll("a.brand, .footer-bottom a").forEach(function (link) {
+    document.querySelectorAll("a.brand").forEach(function (link) {
       link.setAttribute("href", homeHref);
     });
     document.querySelectorAll('a[href*="?v=2026091418"]').forEach(function (link) {

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "GC Inter";
-  src: url("../assets/fonts/InterVariable.woff2") format("woff2");
+  src: url("../assets/fonts/InterLatinVariable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: optional;
@@ -77,6 +77,7 @@ img { max-width: 100%; }
 .hero h1 span, .service-hero h1 span { color: var(--muted); }
 .hero-copy { max-width: 620px; margin: 32px 0 0; color: var(--muted-strong); font-size: clamp(18px, 2vw, 22px); line-height: 1.45; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero-assurance { max-width: 620px; margin: 18px 0 0; color: var(--muted-strong); font-size: 14px; }
 .ecosystem-strip { overflow: hidden; margin-top: clamp(48px, 6vw, 82px); padding-top: 0; background: transparent; scroll-margin-top: 84px; }
 .marquee { position: relative; overflow: hidden; padding: 18px 0 20px; mask-image: linear-gradient(90deg, rgba(0,0,0,.8) 0, #000 5%, #000 95%, rgba(0,0,0,.8) 100%); -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.8) 0, #000 5%, #000 95%, rgba(0,0,0,.8) 100%); }
 .marquee-track { --gc-marquee-distance: 50%; display: flex; width: max-content; will-change: transform; animation: gc-marquee 32s linear infinite; }
@@ -141,6 +142,27 @@ img { max-width: 100%; }
 .footer-col a { display: block; width: fit-content; margin: 9px 0; color: var(--muted); text-decoration: none; font-size: 13px; }
 .footer-col a:hover { color: var(--text); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+.cookie-settings { padding: 0; border: 0; color: inherit; background: transparent; text-decoration: underline; cursor: pointer; }
+.cookie-banner { position: fixed; bottom: 20px; left: 20px; z-index: 180; width: min(420px, calc(100% - 40px)); max-height: 70dvh; margin: 0; padding: 20px; overflow: auto; color: var(--text); background: var(--surface-raised); border: 1px solid var(--border-strong); border-radius: 16px; box-shadow: 0 12px 60px #0008; }
+.cookie-banner[hidden] { display: none; }
+.cookie-banner-copy { flex: 1; }
+.cookie-banner h2, .cookie-dialog h2 { margin: 0 0 10px; font-size: 20px; line-height: 1.25; }
+.cookie-banner p, .cookie-dialog p { margin: 0 0 12px; color: var(--muted-strong); font-size: 14px; }
+.cookie-banner a, .cookie-dialog a { color: var(--text); font-size: 14px; }
+.cookie-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.cookie-actions button { min-height: 44px; padding: 10px 16px; border: 1px solid var(--border-strong); border-radius: 10px; color: var(--text); background: var(--surface-soft); cursor: pointer; font-size: 14px; }
+.cookie-actions button:hover { border-color: var(--muted-strong); }
+.cookie-banner h2 { font-size: 16px; }
+.cookie-banner p { margin-bottom: 8px; }
+.cookie-banner .cookie-actions { gap: 8px; margin-top: 14px; }
+.cookie-banner .cookie-actions button { flex: 1 1 auto; padding: 10px 12px; }
+.cookie-actions button:focus-visible, .cookie-settings:focus-visible, .cookie-dialog input:focus-visible { outline: 2px solid var(--blue-soft); outline-offset: 4px; }
+.cookie-dialog { width: min(560px, calc(100% - 32px)); max-height: 85dvh; padding: 28px; color: var(--text); background: var(--surface-raised); border: 1px solid var(--border-strong); border-radius: 16px; }
+.cookie-dialog::backdrop { background: #000b; }
+.cookie-option { display: flex; align-items: start; gap: 10px; margin: 18px 0; font-size: 14px; }
+.cookie-option input { flex: none; margin-top: 5px; accent-color: var(--blue-soft); }
+.cookie-status:empty { display: none; }
+@media (max-width: 900px) { .cookie-banner { width: calc(100% - 24px); max-width: 420px; bottom: 12px; left: 12px; padding: 16px; } .cookie-actions button { flex: 1 1 145px; } }
 .whatsapp-float { position: fixed; right: 20px; bottom: 20px; z-index: 80; display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; min-height: 50px; padding: 0; color: #07190e; background: var(--green); border: 1px solid #69e99e; border-radius: 50%; text-decoration: none; box-shadow: 0 10px 30px rgba(0, 0, 0, .35); transition: transform 180ms var(--ease), background 180ms ease, box-shadow 180ms ease; }
 .whatsapp-float:hover, .whatsapp-float:focus-visible { background: #54e08e; box-shadow: 0 14px 34px rgba(0, 0, 0, .42); transform: translateY(-2px); }
 .whatsapp-icon { display: block; width: 24px; height: 24px; }
