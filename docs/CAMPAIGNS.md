@@ -15,7 +15,10 @@ Cada serviço pode divulgar sua própria URL; revisar ação/mês antes de reuti
 O script aceita somente as origens/mídias/posições deste catálogo e campanhas
 gc_tech_AAAAMM ou perfil_empresa. Para uma nova origem/posição, atualizar o catálogo
 em analytics.js e os testes antes de divulgar; UTMs não reconhecidas são removidas
-de page_location. Anúncios pagos e seus identificadores não fazem parte desta versão.
+de page_location. Para Google Ads, a codificação automática já está ativa: gclid,
+gbraid ou wbraid válidos são preservados na page_location enviada ao GA4 somente
+depois do aceite de Estatísticas. Os sinais de armazenamento e dados de publicidade
+permanecem negados; essa medição não habilita personalização nem otimização de lances.
 Não inserir nome, telefone ou e-mail. As UTMs são públicas e sensíveis a maiúsculas.
 GA4 usa esses parâmetros para aquisição; não precisa de um gerador de links novo.
 

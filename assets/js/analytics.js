@@ -31,6 +31,11 @@
   });
   var campaign = incoming.searchParams.get("utm_campaign");
   if (campaign === "perfil_empresa" || /^gc_tech_20\d{2}(0[1-9]|1[0-2])$/.test(campaign)) pageUrl.searchParams.set("utm_campaign", campaign);
+  // Preserva IDs automáticos do Google Ads apenas depois do aceite de Estatísticas.
+  ["gclid", "gbraid", "wbraid"].forEach(function (name) {
+    var clickId = incoming.searchParams.get(name);
+    if (clickId && /^(?=.*[A-Za-z])[A-Za-z0-9_-]{10,200}$/.test(clickId)) pageUrl.searchParams.set(name, clickId);
+  });
   window.gtag("js", new Date());
   var referrer = "";
   try { var referringUrl = new URL(document.referrer); referrer = referringUrl.origin; } catch (_) { /* Sem referenciador. */ }

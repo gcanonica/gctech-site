@@ -36,10 +36,14 @@ atual; view_service é histórico e deve ser tratado com corte de versão.
 
 Parâmetros novos: link_location (hero/navigation/contact/content/footer/floating),
 service_name (serviço ou general). Não enviar mensagem, nome, telefone, e-mail,
-endereço ou dados de ordem de serviço. page_location conserva somente UTMs do
-catálogo controlado; campanhas gc_tech_AAAAMM ou perfil_empresa. Demais parâmetros,
-identificadores de anúncio e fragmentos removidos. page_referrer conserva apenas
-a origem externa, sem caminho, query ou fragmento.
+endereço ou dados de ordem de serviço. page_location conserva UTMs do catálogo
+controlado (campanhas gc_tech_AAAAMM ou perfil_empresa) e IDs automáticos gclid,
+gbraid e wbraid quando válidos (10–200 caracteres, ao menos uma letra, com
+caracteres alfanuméricos, `_` ou `-`).
+Os IDs só chegam ao GA4 depois do aceite de Estatísticas; ad_storage,
+ad_user_data e ad_personalization continuam negados, sem pixels de anúncios ou
+personalização. Outros parâmetros e fragmentos são removidos. page_referrer
+conserva apenas a origem externa, sem caminho, query ou fragmento.
 Não incluir dados pessoais em UTMs. Isto não certifica toda a coleta do GA4.
 
 ## Fuso aplicado
@@ -101,7 +105,10 @@ acompanhamento 18011637420, mas não retornou ação/rótulo de conversão de we
 Consulta de campanhas via MCP não depende de pixel no site. Medição de publicidade
 exige decisão separada de consentimento, configuração de conversões reais e
 validação de atribuição. Não criar conversões externas no fluxo de leitura.
-`gclid` ainda é removido da URL enviada ao GA4; não prometer atribuição Ads pronta.
+IDs automáticos de clique podem ser associados à sessão para diagnóstico de
+origem depois de chegarem dados pagos reais. Com `ad_user_data` negado, o Google
+limita exportações de conversão baseadas em ID de clique; não usar a conversão
+para lances nem afirmar atribuição Ads completa.
 Clique WhatsApp continua intenção, nunca contato confirmado, compra ou receita.
 
 Não há certificação de conformidade jurídica; revisar a política para operação,
