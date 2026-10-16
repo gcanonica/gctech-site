@@ -87,7 +87,7 @@ const count = home.window.dataLayer.length;
 vm.runInContext(source, home.context);
 assert.equal(home.window.dataLayer.length, count, 'carregamento duplicado');
 assert.equal(home.scripts.length, 1);
-for (const route of ['cftv', 'redes-wifi', 'computadores', 'dispositivos', 'empresas/suporte-ti', 'sites/criacao-de-sites', 'sites/sites-sob-medida']) {
+for (const route of ['cftv', 'redes-wifi', 'computadores', 'dispositivos', 'empresas/suporte-ti', 'sites/criacao-de-sites', 'sites/sites-sob-medida', 'sites/portfolio']) {
   const state = analytics('https://gctech.pro/' + route + '/');
   assert.equal(events(state)[0][1], 'service_page_view');
   click(state, 'https://api.whatsapp.com/send?phone=5541995372084', '.whats-float');
@@ -98,8 +98,68 @@ for (const route of ['cftv', 'redes-wifi', 'computadores', 'dispositivos', 'empr
 
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(item => item[1]);
-assert.equal(urls.length, 17);
-assert.equal(new Set(urls).size, 17);
+assert.equal(urls.length, 18);
+assert.equal(new Set(urls).size, 18);
+assert(fs.readFileSync(path.join(root, 'index.html'), 'utf8').includes('href="sites/"'), 'home links to sites landing');
+assert(fs.readFileSync(path.join(root, 'sites/index.html'), 'utf8').includes('href="portfolio/"'), 'sites page links to portfolio');
+const portfolio = fs.readFileSync(path.join(root, 'sites/portfolio/index.html'), 'utf8');
+assert(!/Michels|Cherrie|Michels Advogados|previas\.gctech\.pro/i.test(portfolio), 'portfólio não expõe nomes ou link da prévia de cliente');
+const portfolioSchema = JSON.parse([...portfolio.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)][0][1]);
+const portfolioList = portfolioSchema['@graph'].find(item => item['@type'] === 'CollectionPage').mainEntity;
+assert.equal(portfolioList.numberOfItems, 8);
+assert.equal(portfolioList.itemListElement.length, 8);
+assert(portfolioList.itemListElement.some(item => item.item.url === 'https://canonicacontabil.com/'), 'portfólio inclui a Canônica Contabilidade como projeto publicado');
+assert(portfolioList.itemListElement.some(item => item.item.url === 'https://gctech.pro/sites/portfolio/modelos/vicio-de-perfume/'), 'portfólio inclui a prévia do projeto Vício de Perfume');
+const demoStyles = fs.readFileSync(path.join(root, 'sites/portfolio/modelos/portfolio-designs.css'), 'utf8');
+assert(!/Michels|Cherrie/i.test(demoStyles), 'CSS das demos não expõe nomes de projetos de origem');
+const demoPages = [
+  { route: '/sites/portfolio/modelos/advocacia/', file: 'sites/portfolio/modelos/advocacia/index.html', label: 'NORTE' },
+  { route: '/sites/portfolio/modelos/loja/', file: 'sites/portfolio/modelos/loja/index.html', label: 'AURA' },
+  { route: '/sites/portfolio/modelos/contabilidade/', file: 'sites/portfolio/modelos/contabilidade/index.html', label: 'SOMA' },
+  { route: '/sites/portfolio/modelos/sistema/', file: 'sites/portfolio/modelos/sistema/index.html', label: 'orbe' },
+  { route: '/sites/portfolio/modelos/vicio-de-perfume/', file: 'sites/portfolio/modelos/vicio-de-perfume/index.html', label: 'Vício de Perfume', stylesheet: 'vicio-preview.css' }
+];
+for (const demo of demoPages) {
+  const html = fs.readFileSync(path.join(root, demo.file), 'utf8');
+  assert(html.includes(demo.label), demo.route + ' tem nome fictício');
+  assert(/<meta name="robots" content="noindex,nofollow,noarchive">/i.test(html), demo.route + ' não indexável');
+  assert(/template (?:visual )?demonstrativo|prévia (?:demonstrativa|de (?:site|loja|e-commerce))|loja de demonstração|modelo fictício|vitrine fictícia|ambiente fictício|sistema fictício/i.test(html), demo.route + ' identificada como demonstração');
+  assert(!/Michels|Cherrie|michelsadvogados|554199051385|michelsadvogados\.com\.br/i.test(html), demo.route + ' não contém marca ou contato de origem');
+  assert(!/googletagmanager\.com|analytics\.js|consent\.js|wa\.me|tel:|mailto:/i.test(html), demo.route + ' sem analytics ou contatos/pedidos reais');
+  if (demo.label === 'Vício de Perfume') {
+    assert(!/fetch\s*\(|\/api\/|mercadopago|supabase|\/(?:checkout|admin)(?:\/|"|')/i.test(html), demo.route + ' sem integrações comerciais ou rotas privadas');
+    assert(html.includes('Perfumes que ficam na memória.') && html.includes('assets/vicio-de-perfume-logo.png'), demo.route + ' reproduz identidade e conteúdo da home local');
+  }
+  assert(html.includes(demo.stylesheet || '../portfolio-designs.css'), demo.route + ' usa CSS isolado da demonstração');
+  assert(html.includes('aria-label="Navegação') || html.includes('aria-label="Navegação principal"') || html.includes('aria-label="Telas do produto"'), demo.route + ' possui navegação identificada');
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, demo.route + ' não repete IDs');
+  for (const [, fragment] of html.matchAll(/href="#([^"\s]+)"/g)) assert(ids.includes(fragment), demo.route + ' âncora #' + fragment + ' tem destino');
+  for (const [, script] of html.matchAll(/<script>([\s\S]*?)<\/script>/gi)) assert.doesNotThrow(() => new Function(script), demo.route + ' JavaScript válido');
+  assert(!urls.includes('https://gctech.pro' + demo.route), demo.route + ' fora do sitemap');
+  for (const item of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+    if (/^(https?:|mailto:|tel:|#|data:)/.test(item[1])) continue;
+    const targetUrl = new URL(item[1], 'https://gctech.pro' + demo.route);
+    let target = path.join(root, decodeURIComponent(targetUrl.pathname));
+    if (targetUrl.pathname.endsWith('/')) target = path.join(target, 'index.html');
+    assert(fs.existsSync(target), demo.route + ' -> ' + item[1]);
+  }
+}
+const legalDemo = fs.readFileSync(path.join(root, demoPages[0].file), 'utf8');
+assert(legalDemo.includes('class="legal-index"') && legalDemo.includes('id="legal-search"') && legalDemo.includes('class="legal-topic"') && legalDemo.includes('class="legal-timeline"'), 'template de advocacia combina localizador e percurso por temas');
+assert(legalDemo.includes("search.addEventListener('input', update)") && legalDemo.includes("topic.hidden = !matches"), 'localizador jurídico filtra os temas sem enviar dados');
+const storeDemo = fs.readFileSync(path.join(root, demoPages[1].file), 'utf8');
+assert(storeDemo.includes('id="shop-search"') && storeDemo.includes('data-filter="perfumes"') && storeDemo.includes('class="shop-product"') && storeDemo.includes("addEventListener('input', update)"), 'template de loja filtra e pesquisa o catálogo demonstrativo');
+assert((storeDemo.match(/data-category="/g) || []).length === 3, 'catálogo demonstrativo possui três categorias/produtos');
+assert(!/\.shop-product:last-child\s*\{[^}]*display\s*:\s*none/i.test(demoStyles), 'catálogo não esconde produto em breakpoint');
+const accountingDemo = fs.readFileSync(path.join(root, demoPages[2].file), 'utf8');
+assert(accountingDemo.includes('class="ledger-steps"') && accountingDemo.includes('aria-label="Etapas ilustrativas de um atendimento contábil"'), 'template contábil apresenta uma jornada cronológica sem depender de interação');
+assert((accountingDemo.match(/<li><span>0[1-4]<\/span><h3>/g) || []).length === 4 && accountingDemo.includes('class="ledger-records"'), 'template contábil tem quatro etapas e um mapa de informações próprio');
+const softwareDemo = fs.readFileSync(path.join(root, demoPages[3].file), 'utf8');
+assert(softwareDemo.includes('data-view-button="summary"') && softwareDemo.includes('data-view-panel="queue"') && softwareDemo.includes('data-view-panel="equipment"'), 'template de sistema mostra resumo, fila de ordens e equipamentos');
+assert((softwareDemo.match(/data-view-button="/g) || []).length === 3 && softwareDemo.includes('class="orbe-shell"') && softwareDemo.includes('class="orbe-kanban"'), 'template de sistema tem três visões dentro de um ambiente de produto');
+assert((softwareDemo.match(/<article><span>(?:ENTRADA|DIAGNÓSTICO|APROVAÇÃO|REPARO|CONTROLE DE QUALIDADE|RETIRADA)/g) || []).length === 6, 'fila fictícia percorre seis etapas de reparo');
+for (const selector of ['.legal-finder-label', '.shop-controls', '.ledger-steps', '.orbe-kanban']) assert(demoStyles.includes(selector), 'CSS diferenciado: ' + selector);
 for (const url of urls) {
   const pathname = new URL(url).pathname;
   const file = path.join(root, pathname, 'index.html');
@@ -131,4 +191,4 @@ for (const url of urls) {
     }
   }
 }
-console.log('PASS: consentimento básico, anúncios negados, isolamento GA4, eventos/duplicação/URLs, campanhas, 17 páginas, schema, FAQs e links locais.');
+console.log('PASS: consentimento básico, anúncios negados, isolamento GA4, eventos/duplicação/URLs, campanhas, 18 páginas indexáveis, 4 templates noindex com briefings, estruturas distintas, interações, schema, FAQs do site e links locais.');

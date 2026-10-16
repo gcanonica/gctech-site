@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Demonstração fictícia de um sistema de ordens de serviço com telas navegáveis e dados inventados.">
+  <meta name="theme-color" content="#eef3ef">
+  <title>Orbe OS — painel demonstrativo</title>
+  <link rel="icon" type="image/svg+xml" href="../../../../assets/favicon.svg">
+  <link rel="stylesheet" href="../portfolio-designs.css?v=20261016-design-ref">
+</head>
+<body class="software-demo">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="orbe-ribbon"><span>SISTEMA FICTÍCIO · ORDENS E EQUIPAMENTOS DE EXEMPLO</span><a href="../../">Sair para o portfólio ↗</a></div>
+  <main class="orbe-shell" id="conteudo">
+    <aside class="orbe-sidebar">
+      <a class="orbe-brand" href="#inicio" aria-label="Orbe OS, início"><span>o</span>orbe <b>os</b></a>
+      <span class="orbe-workspace-label">OFICINA AURORA / AMBIENTE DEMO</span>
+      <nav class="orbe-app-nav" aria-label="Telas do produto">
+        <span class="orbe-app-nav-label">NAVEGAR</span>
+        <button type="button" data-view-button="summary" aria-controls="orbe-summary" aria-pressed="true"><span aria-hidden="true">⌂</span>Resumo<i>01</i></button>
+        <button type="button" data-view-button="queue" aria-controls="orbe-queue" aria-pressed="false"><span aria-hidden="true">≋</span>Fila de OS<i>02</i></button>
+        <button type="button" data-view-button="equipment" aria-controls="orbe-equipment" aria-pressed="false"><span aria-hidden="true">▤</span>Equipamentos<i>03</i></button>
+      </nav>
+      <div class="orbe-sidebar-note"><b>DADOS DE EXEMPLO</b>Protocolos, dispositivos e estados nesta tela são inventados.</div>
+    </aside>
+    <div class="orbe-main" id="inicio">
+      <header class="orbe-topbar"><span class="orbe-breadcrumb">oficina aurora <b>/</b> ORBE OS</span><span class="orbe-demo-status">MODO DEMONSTRAÇÃO</span></header>
+      <div class="orbe-content">
+        <div class="orbe-screen-head"><div><span id="orbe-context">OPERAÇÃO / RESUMO</span><h1 id="orbe-title">Bom dia, equipe.</h1></div><p id="orbe-description">Um painel ilustrativo para acompanhar ordens, organizar a fila e consultar o andamento dos equipamentos.</p></div>
+        <section class="orbe-panel" id="orbe-summary" data-view-panel="summary" aria-label="Resumo fictício da operação">
+          <div class="orbe-metrics">
+            <article><small>OS EM TRIAGEM</small><strong>08</strong><span>número fictício</span></article>
+            <article><small>AGUARDANDO APROVAÇÃO</small><strong>03</strong><span>estado ilustrativo</span></article>
+            <article><small>PRONTAS</small><strong>04</strong><span>quantidade inventada</span></article>
+          </div>
+          <div class="orbe-dashboard-grid">
+            <section class="orbe-panel-card"><div class="orbe-panel-title"><h2>Ordens recentes</h2><span>PROTOCOLOS INVENTADOS</span></div>
+              <div class="orbe-activity-row"><i aria-hidden="true"></i><span><b>OS-0264 · Smartphone de exemplo</b><small>Equipamento fictício</small></span><em>Diagnóstico</em></div>
+              <div class="orbe-activity-row"><i aria-hidden="true"></i><span><b>OS-0263 · Notebook de exemplo</b><small>Equipamento fictício</small></span><em>Aguardando peça</em></div>
+              <div class="orbe-activity-row"><i aria-hidden="true"></i><span><b>OS-0262 · Tablet de exemplo</b><small>Equipamento fictício</small></span><em>Pronto</em></div>
+            </section>
+            <section class="orbe-panel-card"><div class="orbe-panel-title"><h2>Entrada de equipamento</h2><span>FLUXO ILUSTRATIVO</span></div><ul class="orbe-next-list"><li>Registrar estado inicial <span>01</span></li><li>Descrever a solicitação <span>02</span></li><li>Definir próximo contato <span>03</span></li></ul></section>
+          </div>
+        </section>
+        <section class="orbe-panel" id="orbe-queue" data-view-panel="queue" aria-label="Fila fictícia de ordens de serviço; faixa com rolagem horizontal" tabindex="0" hidden>
+          <div class="orbe-kanban">
+            <article><span>ENTRADA <b>02</b></span><div class="orbe-task"><strong>OS-0265 · Smartphone</strong><small>Cadastro inicial · exemplo</small></div><div class="orbe-task"><strong>OS-0266 · Notebook</strong><small>Triagem · exemplo</small></div></article>
+            <article><span>DIAGNÓSTICO <b>01</b></span><div class="orbe-task"><strong>OS-0264 · Smartphone</strong><small>Avaliação técnica · exemplo</small></div></article>
+            <article><span>APROVAÇÃO <b>01</b></span><div class="orbe-task"><strong>OS-0267 · Tablet</strong><small>Aguardando autorização · exemplo</small></div></article>
+            <article><span>REPARO <b>01</b></span><div class="orbe-task"><strong>OS-0263 · Notebook</strong><small>Serviço em andamento · exemplo</small></div></article>
+            <article><span>CONTROLE DE QUALIDADE <b>01</b></span><div class="orbe-task"><strong>OS-0268 · Console</strong><small>Testes finais · exemplo</small></div></article>
+            <article><span>RETIRADA <b>01</b></span><div class="orbe-task"><strong>OS-0262 · Tablet</strong><small>Pronto · exemplo</small></div></article>
+          </div>
+        </section>
+        <section class="orbe-panel" id="orbe-equipment" data-view-panel="equipment" aria-label="Equipamentos fictícios" hidden>
+          <table class="orbe-project-table"><thead><tr><th>PROTOCOLO</th><th>EQUIPAMENTO</th><th>ETAPA</th><th>REGISTRO</th></tr></thead><tbody><tr><td>OS-0264</td><td>Smartphone · exemplo</td><td>Diagnóstico</td><td>Fictício</td></tr><tr><td>OS-0263</td><td>Notebook · exemplo</td><td>Aguardando peça</td><td>Fictício</td></tr><tr><td>OS-0262</td><td>Tablet · exemplo</td><td>Pronto</td><td>Fictício</td></tr></tbody></table>
+        </section>
+        <div class="orbe-app-foot"><span>INTERFACE FICTÍCIA</span><span id="orbe-view-status" aria-live="polite">Tela selecionada: resumo.</span><span>SEM DADOS REAIS</span></div>
+      </div>
+      <footer class="orbe-footer"><span>ORBE OS · CONCEITO DE SISTEMA</span><a href="../../">Voltar ao portfólio GC Tech ↗</a></footer>
+    </div>
+  </main>
+  <script>
+    (() => {
+      const buttons = [...document.querySelectorAll('[data-view-button]')];
+      const panels = [...document.querySelectorAll('[data-view-panel]')];
+      const status = document.querySelector('#orbe-view-status');
+      const title = document.querySelector('#orbe-title');
+      const context = document.querySelector('#orbe-context');
+      const description = document.querySelector('#orbe-description');
+      const labels = {
+        summary: ['resumo', 'OPERAÇÃO / RESUMO', 'Bom dia, equipe.', 'Um painel ilustrativo para acompanhar ordens, organizar a fila e consultar o andamento dos equipamentos.'],
+        queue: ['fila de ordens', 'ATENDIMENTO / FILA DE ORDENS', 'Cada etapa, no seu lugar.', 'A fila fictícia percorre seis etapas; em telas pequenas, deslize para ver todas.'],
+        equipment: ['equipamentos', 'REGISTROS / EQUIPAMENTOS', 'Histórico sem perder o contexto.', 'Uma tabela de exemplo reúne protocolo, equipamento e etapa sem dados de clientes.']
+      };
+      buttons.forEach((button) => button.addEventListener('click', () => {
+        const view = button.dataset.viewButton;
+        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        panels.forEach((panel) => { panel.hidden = panel.dataset.viewPanel !== view; });
+        [status.textContent, context.textContent, title.textContent, description.textContent] = [
+          'Tela selecionada: ' + labels[view][0] + '.', labels[view][1], labels[view][2], labels[view][3]
+        ];
+      }));
+    })();
+  </script>
+</body>
+</html>
