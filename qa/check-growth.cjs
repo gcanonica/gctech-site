@@ -106,10 +106,11 @@ const portfolio = fs.readFileSync(path.join(root, 'sites/portfolio/index.html'),
 assert(!/Michels|Cherrie|Michels Advogados|previas\.gctech\.pro/i.test(portfolio), 'portfólio não expõe nomes ou link da prévia de cliente');
 const portfolioSchema = JSON.parse([...portfolio.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)][0][1]);
 const portfolioList = portfolioSchema['@graph'].find(item => item['@type'] === 'CollectionPage').mainEntity;
-assert.equal(portfolioList.numberOfItems, 8);
-assert.equal(portfolioList.itemListElement.length, 8);
+assert.equal(portfolioList.numberOfItems, 9);
+assert.equal(portfolioList.itemListElement.length, 9);
 assert(portfolioList.itemListElement.some(item => item.item.url === 'https://canonicacontabil.com/'), 'portfólio inclui a Canônica Contabilidade como projeto publicado');
 assert(portfolioList.itemListElement.some(item => item.item.url === 'https://gctech.pro/sites/portfolio/modelos/vicio-de-perfume/'), 'portfólio inclui a prévia do projeto Vício de Perfume');
+assert(portfolioList.itemListElement.some(item => item.item.url === 'https://gctech.pro/sites/portfolio/modelos/seguranca/'), 'portfólio inclui o template de segurança e serviços');
 const demoStyles = fs.readFileSync(path.join(root, 'sites/portfolio/modelos/portfolio-designs.css'), 'utf8');
 assert(!/Michels|Cherrie/i.test(demoStyles), 'CSS das demos não expõe nomes de projetos de origem');
 const demoPages = [
@@ -117,6 +118,7 @@ const demoPages = [
   { route: '/sites/portfolio/modelos/loja/', file: 'sites/portfolio/modelos/loja/index.html', label: 'AURA' },
   { route: '/sites/portfolio/modelos/contabilidade/', file: 'sites/portfolio/modelos/contabilidade/index.html', label: 'SOMA' },
   { route: '/sites/portfolio/modelos/sistema/', file: 'sites/portfolio/modelos/sistema/index.html', label: 'orbe' },
+  { route: '/sites/portfolio/modelos/seguranca/', file: 'sites/portfolio/modelos/seguranca/index.html', label: 'VÉRTICE', stylesheet: 'styles.css' },
   { route: '/sites/portfolio/modelos/vicio-de-perfume/', file: 'sites/portfolio/modelos/vicio-de-perfume/index.html', label: 'Vício de Perfume', stylesheet: 'vicio-preview.css' }
 ];
 for (const demo of demoPages) {
@@ -191,4 +193,4 @@ for (const url of urls) {
     }
   }
 }
-console.log('PASS: consentimento básico, anúncios negados, isolamento GA4, eventos/duplicação/URLs, campanhas, 18 páginas indexáveis, 4 templates noindex com briefings, estruturas distintas, interações, schema, FAQs do site e links locais.');
+console.log('PASS: consentimento básico, anúncios negados, isolamento GA4, eventos/duplicação/URLs, campanhas, 18 páginas indexáveis, 5 templates noindex com briefings, estruturas distintas, interações, schema, FAQs do site e links locais.');

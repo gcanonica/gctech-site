@@ -390,6 +390,9 @@ img { max-width: 100%; }
 .portfolio-art-concept .portfolio-art-wordmark strong { color: #a4d4c4; }
 .portfolio-art-store { background: radial-gradient(ellipse at 80% 16%, rgba(213, 180, 108, .26), transparent 55%), linear-gradient(145deg, #315f4c, #182c23 72%); }
 .portfolio-art-store .portfolio-art-wordmark strong { color: #e3ce95; }
+.portfolio-art-security { background: radial-gradient(ellipse at 82% 16%, rgb(200 223 116 / .24), transparent 55%), linear-gradient(145deg, #1d4a40, #102f2a 72%); }
+.portfolio-art-security .portfolio-art-label, .portfolio-art-security .portfolio-art-caption { color: #c4d0c9; }
+.portfolio-art-security .portfolio-art-wordmark strong { color: #c8df74; }
 
 body.demo-page { --demo-canvas: #f4f2ec; --demo-surface: #fffefa; --demo-ink: #282828; --demo-muted: #696863; --demo-accent: #8b5a1e; --demo-accent-soft: #f2b65a; min-height: 100vh; background: var(--demo-canvas); color: var(--demo-ink); font-family: "GC Inter", Inter, Arial, sans-serif; }
 body.demo-page-store { --demo-canvas: #faf6f1; --demo-surface: #fffdfb; --demo-ink: #302a28; --demo-muted: #766b65; --demo-accent: #945848; --demo-accent-soft: #ead8cd; }
