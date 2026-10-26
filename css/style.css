@@ -57,6 +57,7 @@ img { max-width: 100%; }
 .nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 620; line-height: 1; cursor: pointer; transition: transform 180ms var(--ease), background 180ms ease, border-color 180ms ease; }
 .nav-cta, .button-primary { color: #08090a; background: var(--text); }
 .button-primary:hover, .nav-cta:hover { background: #dfe1e4; transform: translateY(-1px); }
+.desktop-nav .nav-cta:hover, .desktop-nav .nav-cta:focus-visible { color: #08090a; }
 .button-secondary { color: var(--text); background: transparent; border-color: var(--border-strong); }
 .button-secondary:hover { background: var(--surface-raised); border-color: #4a4d55; }
 .button-whatsapp { color: #07190e; background: var(--green); }
