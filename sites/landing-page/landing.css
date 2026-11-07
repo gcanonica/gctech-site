@@ -1,0 +1,60 @@
+/* Landing page essencial: estilos próprios desta página, sobre css/style.css. */
+/* Os botões usam .button-lead (mesmo visual de .button-whatsapp) para que o
+   initServiceLead de site.js não troque o texto e a mensagem do CTA único. */
+.button-lead { color: #07190e; background: var(--green); }
+.button-lead:hover, .button-lead:focus-visible { background: #54e08e; transform: translateY(-1px); }
+.desktop-nav a.lp-nav-cta { display: inline-flex; color: #08090a; background: var(--text); font-weight: 620; }
+.desktop-nav a.lp-nav-cta:hover { background: #dfe1e4; transform: translateY(-1px); }
+
+.lp .service-hero h1 { max-width: 980px; font-size: clamp(34px, 9.4vw, 76px); line-height: 1.02; letter-spacing: -.045em; }
+.lp .service-lead { font-size: clamp(17px, 4.6vw, 21px); }
+.lp-micro { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
+.lp .section { padding-block: clamp(64px, 9vw, 130px); }
+.lp .section-head { margin-bottom: clamp(32px, 5vw, 64px); }
+.lp .section-head h2, .lp .split-copy h2, .lp .cta-band h2 { font-size: clamp(30px, 8.4vw, 58px); }
+.lp .split-copy h2 { margin-top: 0; }
+
+.lp-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.lp-list li { position: relative; padding: 20px 0 20px 30px; border-bottom: 1px solid var(--border); color: var(--muted-strong); }
+.lp-list li::before { content: ""; position: absolute; top: 31px; left: 4px; width: 12px; height: 2px; border-radius: 2px; background: var(--blue); }
+.lp-note { max-width: 760px; margin: 28px 0 0; color: var(--text); font-size: 18px; }
+
+.lp-subhead { margin: 56px 0 0; font-weight: 500; }
+.lp-plans { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 40px; }
+.lp-plan { padding: 24px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+.lp-plan h3 { margin: 0 0 6px; font-size: 22px; font-weight: 560; letter-spacing: -.025em; }
+.lp-price { display: block; margin: 18px 0 4px; font-size: clamp(34px, 9vw, 44px); font-weight: 540; line-height: 1.05; letter-spacing: -.04em; }
+.lp-price small { color: var(--muted-strong); font-size: 18px; font-weight: 500; letter-spacing: -.01em; }
+.lp-plan dl { margin: 18px 0 0; }
+.lp-plan dt { margin-top: 16px; color: var(--blue-soft); font-family: "GC Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.lp-plan dd { margin: 6px 0 0; color: var(--muted-strong); font-size: 15px; }
+
+.lp-extras { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+.lp-extra { padding: 22px 24px; border: 1px solid var(--border); border-radius: 16px; }
+.lp-extra h3 { margin: 0 0 8px; font-size: 18px; font-weight: 560; }
+.lp-extra p { margin: 0; color: var(--muted); font-size: 15px; }
+.lp-extra p + p { margin-top: 10px; }
+
+.lp-guarantees { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.lp-guarantee { padding: 26px 24px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+.lp-guarantee .mono-label { color: var(--blue-soft); }
+.lp-guarantee h3 { margin: 14px 0 10px; font-size: 22px; font-weight: 560; letter-spacing: -.025em; }
+.lp-guarantee p { margin: 0; color: var(--muted); }
+.lp-promise { max-width: 760px; margin: 28px 0 0; color: var(--muted-strong); }
+.lp-promise strong { color: var(--text); font-weight: 600; }
+
+.lp .faq-list { margin-left: 0; }
+.lp .faq-list summary { font-size: 17px; }
+.lp .cta-band .button { max-width: 100%; white-space: normal; text-align: center; line-height: 1.25; padding-block: 12px; }
+
+@media (min-width: 760px) {
+  .lp-plans, .lp-extras, .lp-guarantees { grid-template-columns: 1fr 1fr; }
+  .lp-plan { padding: 32px; }
+  .lp .faq-list { margin-left: auto; }
+}
+
+@media (max-width: 640px) {
+  .lp .service-hero h1 { font-size: clamp(32px, 9.4vw, 46px); }
+  .lp .hero-actions .button { min-height: 52px; padding-block: 12px; white-space: normal; text-align: center; line-height: 1.25; }
+  .lp .cta-band .button { width: 100%; }
+}
