@@ -14,6 +14,7 @@
       "/computadores/": { label: "Agendar diagnóstico", message: "Olá! Vim pelo site da GC Tech e preciso de diagnóstico de computador ou notebook. Vou informar minha cidade, modelo e o que aconteceu." },
       "/dispositivos/": { label: "Pedir orçamento de reparo", message: "Olá! Preciso de orçamento para reparar meu celular, tablet, videogame ou controle. Vou enviar o modelo e o problema." },
       "/empresas/": { label: "Agendar diagnóstico gratuito", message: "Olá! Vim pelo site da GC Tech e quero agendar um diagnóstico gratuito de TI para minha empresa. Vou informar a cidade, quantidade de equipamentos e principal problema." },
+      "/sites/landing-page/": { label: "Pedir minha prévia sem custo", message: "Oi! Vi a página da landing essencial e quero ver como ficaria a do meu negócio. Meu negócio é:" },
       "/sites/": { label: "Pedir proposta de site", message: "Olá! Vim pelo site da GC Tech e quero uma proposta de site. Vou informar o tipo de negócio, objetivo e prazo desejado." }
     };
     var key = Object.keys(leads).find(function (route) { return (path + "/").indexOf(route) === 0; });
