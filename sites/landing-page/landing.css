@@ -69,3 +69,16 @@
 @media (min-width: 900px) {
   .lp-hero-grid { grid-template-columns: 1.4fr 1fr; gap: 56px; }
 }
+
+/* Celular: o exemplo sai do topo (o título dele competia com o nosso) e vira seção própria. */
+.lp-example { display: block; }
+.lp-example .section-head { margin-bottom: 28px; }
+@media (max-width: 899px) {
+  .lp-mock-hero { display: none; }
+  .lp .service-hero { padding-bottom: 8px; }
+  .lp .service-hero h1 { margin-bottom: 18px; }
+  .lp .service-lead { margin-bottom: 22px; }
+}
+@media (min-width: 900px) {
+  .lp-example { display: none; }
+}
