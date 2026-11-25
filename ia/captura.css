@@ -1,0 +1,187 @@
+/* Páginas de captura do IA pro Negócio (modelos A e C, teste A/B de 23/11/2026).
+   Cores e fontes: Marca/tokens.css do vault. Feita para celular; no computador fica centralizada. */
+:root {
+  --p: #0F294A; --a: #0369A1; --s: #38BDF8; --sl: #BAE6FD; --bg2: #F1F5F9;
+  --t: #1E293B; --m: #475569; --b: #CBD5E1; --al: #B91C1C; --alb: #FEF2F2; --ok: #15803D; --okb: #F0FDF4;
+  --h: "Plus Jakarta Sans", system-ui, sans-serif; --f: "Inter", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #E2E8F0; }
+body { font-family: var(--f); color: var(--t); background: #E2E8F0; -webkit-text-size-adjust: 100%; }
+.cap { max-width: 480px; margin: 0 auto; background: #fff; min-height: 100vh; overflow-x: hidden; }
+
+/* Sem JS ou antes do sorteio: mostra A. */
+.var-c { display: none; }
+[data-v="c"] .var-a { display: none; }
+[data-v="c"] .var-c { display: block; }
+[hidden] { display: none !important; }
+
+.cap-pad { padding: 20px 16px; }
+.cap-gap8 > * + * { margin-top: 8px; }
+.cap-gap12 > * + * { margin-top: 12px; }
+.cap-gap16 > * + * { margin-top: 16px; }
+.cap-cinza { background: var(--bg2); }
+.cap-escuro { background: var(--p); color: #fff; }
+.cap-topo { display: flex; justify-content: space-between; align-items: center; }
+.cap-selo { display: inline-block; background: var(--p); color: var(--s); font: 800 13px var(--h); padding: 6px 10px; border-radius: 8px; }
+.cap-selo-claro { background: var(--s); color: var(--p); }
+.cap-tag { display: inline-block; background: var(--sl); color: var(--p); font: 700 12px var(--f); letter-spacing: .06em; padding: 5px 9px; border-radius: 999px; }
+h1 { font: 800 clamp(26px, 7.4vw, 31px)/1.12 var(--h); color: var(--p); letter-spacing: -.02em; }
+.cap-escuro h1 { color: #fff; }
+h1 mark { background: linear-gradient(transparent 58%, #FDE047 58% 92%, transparent 92%); color: inherit; }
+h2 { font: 800 18px var(--h); color: var(--p); }
+.cap-amarelo { color: #FDE047; }
+.cap-sub { font: 500 16px/1.5 var(--f); color: var(--m); }
+.cap-14 { font-size: 14px; }
+.cap-15 { font-size: 15px; }
+.cap-micro { font: 500 13px/1.45 var(--f); color: var(--m); text-align: center; }
+.cap-micro a { color: var(--a); }
+.cap-linha { display: flex; align-items: center; gap: 10px; }
+.cap-linha .cap-micro { text-align: left; }
+.cap-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.cap-chips span { border: 1.5px solid var(--b); border-radius: 999px; padding: 5px 10px; font: 600 13px var(--f); color: var(--p); }
+
+/* capa do PDF feita em CSS */
+.cap-capa { position: relative; width: 190px; height: 238px; margin: 4px auto 6px; }
+.cap-capa .fl { position: absolute; inset: 0; background: #E2E8F0; border-radius: 10px; transform: rotate(6deg) translate(14px, 6px); }
+.cap-capa .fl2 { position: absolute; inset: 0; background: var(--bg2); border-radius: 10px; transform: rotate(3deg) translate(7px, 3px); }
+.cap-capa .fr { position: absolute; inset: 0; background: var(--p); border-radius: 10px; padding: 18px 16px; color: #fff; box-shadow: 0 18px 30px rgba(15, 41, 74, .35); transform: rotate(-3deg); }
+.cap-capa .s { display: inline-block; background: var(--s); color: var(--p); font: 800 11px var(--h); padding: 3px 7px; border-radius: 5px; }
+.cap-capa .n { font: 800 60px/1 var(--h); color: var(--s); margin-top: 12px; }
+.cap-capa .tt { font: 800 17px/1.15 var(--h); margin-top: 4px; }
+.cap-capa .ft { position: absolute; bottom: 14px; left: 16px; font: 600 11px var(--f); color: var(--sl); }
+
+/* antes e depois */
+.cap-msg { border-radius: 16px; padding: 14px 16px; font: 500 16px/1.45 var(--f); }
+.cap-errado { background: var(--alb); border: 2px solid var(--al); }
+.cap-certo { background: var(--okb); border: 2px solid var(--ok); }
+.cap-marca { font: 800 12px var(--f); letter-spacing: .08em; margin-bottom: 6px; }
+.cap-errado .cap-marca { color: var(--al); }
+.cap-certo .cap-marca { color: var(--ok); }
+.cap-prompt { background: var(--bg2); border-left: 4px solid var(--a); border-radius: 10px; padding: 14px; font: 500 15px/1.5 var(--f); }
+
+/* formulário */
+.cap-campo { position: relative; display: block; }
+.cap-campo span { display: block; font: 600 14px var(--f); color: var(--p); margin-bottom: 4px; }
+.cap-campo input { display: block; width: 100%; border: 1.5px solid var(--b); border-radius: 12px; padding: 14px; font: 500 16px var(--f); color: var(--t); background: #fff; }
+.cap-campo input:focus { outline: 3px solid var(--a); outline-offset: 1px; border-color: var(--a); }
+.cap-tel b { position: absolute; left: 14px; bottom: 15px; font: 600 16px var(--f); color: var(--t); }
+.cap-tel input { padding-left: 56px; }
+.cap-mel { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.cap-erro { background: var(--alb); color: var(--al); border-radius: 10px; padding: 10px 12px; font: 600 14px var(--f); }
+.cap-btn { display: block; width: 100%; border: 0; cursor: pointer; text-align: center; text-decoration: none; background: #15803D; color: #fff; font: 800 18px var(--h); padding: 17px; border-radius: 14px; box-shadow: 0 8px 18px rgba(22, 163, 74, .35); }
+.cap-btn:disabled { opacity: .7; cursor: wait; }
+.cap-btn:focus-visible { outline: 3px solid var(--p); outline-offset: 2px; }
+
+.cap-rod { background: var(--bg2); padding: 16px; font: 500 12px/1.5 var(--f); color: var(--m); }
+.cap-rod a { color: var(--a); }
+
+/* ===== Acabamento v2 (aprovado por Gustavo em 24/11/2026: Funil/Modelos v2) ===== */
+.cap-selo { display: inline-flex; align-items: center; gap: 6px; }
+.cap-selo i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: currentColor; }
+.cap-selo-claro i { background: var(--p); }
+.cap-heroi { position: relative; overflow: hidden; color: #fff; padding: 20px 20px 118px;
+  background: linear-gradient(165deg, var(--p) 0%, #16365F 70%, #1D4E89 100%); }
+.cap-heroi::after { content: ""; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,189,248,.35), transparent 70%); pointer-events: none; }
+.cap-heroi > * { position: relative; z-index: 1; }
+.cap-heroi h1 { color: #fff; margin-top: 16px; }
+.cap-heroi h1 mark { color: #fff; background: linear-gradient(transparent 60%, rgba(253,224,71,.55) 60% 92%, transparent 92%); }
+.cap-heroi p { font: 500 15.5px/1.5 var(--f); color: rgba(255,255,255,.88); margin-top: 10px; }
+.cap-heroi a { color: var(--sl); font-weight: 700; }
+.cap-heroi-c { padding-bottom: 24px; }
+.cap-heroi-c h1 { margin-top: 12px; }
+.cap-tag-vidro { font: 700 11.5px var(--f); letter-spacing: .04em; background: rgba(255,255,255,.14); padding: 5px 9px; border-radius: 999px; }
+
+/* capa do material (pilha) */
+.cap-pilha { position: relative; height: 150px; width: 280px; margin: -104px auto 0; z-index: 2; }
+.cap-livro { position: absolute; left: 70px; top: 0; width: 130px; height: 160px; border-radius: 9px; background: var(--p); color: #fff;
+  padding: 12px; box-shadow: 0 14px 26px rgba(15,41,74,.35); transform: rotate(-4deg); }
+.cap-livro-tras { left: 150px; top: 10px; width: 110px; height: 140px; background: var(--a); transform: rotate(7deg); }
+.cap-livro em { position: absolute; left: 10px; top: 10px; font: 800 8px var(--h); font-style: normal; background: var(--s); color: var(--p); padding: 2px 5px; border-radius: 4px; }
+.cap-livro b { display: block; font: 800 44px/1 var(--h); color: var(--s); margin-top: 22px; }
+.cap-livro span { display: block; font: 800 12.5px/1.15 var(--h); margin-top: 4px; }
+
+/* formulário num cartão */
+.cap-cartao { position: relative; z-index: 3; margin: 8px 16px 0; background: #fff; border: 1px solid #E2E8F0; border-radius: 20px;
+  padding: 18px; box-shadow: 0 18px 40px rgba(15,41,74,.18); }
+.cap-cartao h2 { font: 800 17px var(--h); color: var(--p); margin-bottom: 6px; }
+.cap-cartao-c { margin: 4px 16px 20px; }
+.cap-prova { display: flex; align-items: center; gap: 10px; padding: 16px 20px 22px; }
+.cap-prova p { font: 600 12.5px/1.4 var(--f); color: var(--m); }
+.cap-rostos { display: flex; flex: 0 0 auto; }
+.cap-rostos span { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; display: flex; align-items: center;
+  justify-content: center; font: 800 11px var(--h); color: #fff; background: var(--a); }
+.cap-rostos span:first-child { margin-left: 0; }
+.cap-rostos span:nth-child(2) { background: #155E75; }
+.cap-rostos span:nth-child(3) { background: #1E3A8A; }
+.cap-rostos span:nth-child(4) { background: #F59E0B; }
+
+/* obrigado + oferta */
+.cap-ok-topo { padding-bottom: 26px; }
+.cap-check { width: 46px; height: 46px; border-radius: 50%; background: #16A34A; display: flex; align-items: center; justify-content: center;
+  font: 800 24px var(--h); color: #fff; margin: 14px 0 0; }
+.cap-oferta { padding: 22px 20px 26px; }
+.cap-oferta > * + * { margin-top: 12px; }
+.cap-tag-oferta { display: inline-block; background: #FEF3C7; color: #92400E; font: 800 11.5px var(--f); letter-spacing: .06em; padding: 6px 10px; border-radius: 999px; }
+.cap-oferta-titulo { font: 800 25px/1.15 var(--h); color: var(--p); letter-spacing: -.02em; }
+.cap-oferta-titulo mark { background: linear-gradient(transparent 58%, #FDE047 58% 92%, transparent 92%); color: inherit; }
+.cap-kit { position: relative; height: 190px; }
+.cap-kit .cap-livro { width: 112px; height: 146px; }
+.cap-kit .cap-livro b { font-size: 34px; }
+.cap-kit .cap-livro span { font-size: 11px; max-width: 78px; }
+.cap-kit .k1 { left: 4%; top: 28px; transform: rotate(-8deg); z-index: 1; }
+.cap-kit .k2 { left: 24%; top: 16px; transform: rotate(-3deg); background: var(--a); z-index: 2; }
+.cap-kit .k3 { left: 44%; top: 12px; transform: rotate(3deg); background: #155E75; z-index: 3; }
+.cap-kit .k4 { left: 64%; top: 22px; transform: rotate(8deg); background: #1E3A8A; z-index: 4; }
+.cap-lista { list-style: none; }
+.cap-lista li { position: relative; padding-left: 32px; font: 500 15px/1.4 var(--f); margin-top: 9px; }
+.cap-lista li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: #DCFCE7;
+  color: #16A34A; font: 800 13px/22px var(--f); text-align: center; }
+.cap-preco { display: flex; align-items: baseline; justify-content: center; gap: 10px; }
+.cap-preco s { font: 600 17px var(--f); color: var(--m); }
+.cap-preco b { font: 800 40px var(--h); color: var(--p); }
+.cap-confia { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 12px; font: 600 12px var(--f); color: var(--m); }
+.cap-nao { display: block; text-align: center; font: 500 13px var(--f); color: var(--m); }
+
+/* Banner de cookies (consent.js): mesmas regras de ia/ia.css, para o aviso aparecer certo nesta página */
+:root { --text: #1E293B; --muted-strong: #475569; --border-strong: #94A3B8; --surface-raised: #FFFFFF; --blue-soft: #0369A1; --ipn-font-body: "Inter", system-ui, sans-serif; }
+.cookie-settings { padding: 0; border: 0; color: inherit; background: transparent; text-decoration: underline; cursor: pointer; }
+.cookie-banner { position: fixed; bottom: 12px; left: 12px; z-index: 180; width: min(420px, calc(100% - 24px)); max-height: 70dvh; overflow: auto; margin: 0; padding: 16px; color: var(--text); background: #fff; border: 1px solid var(--border-strong); border-radius: 14px; box-shadow: 0 12px 32px rgba(15,41,74,.18); }
+.cookie-banner[hidden] { display: none; }
+.cookie-banner h2, .cookie-dialog h2 { margin: 0 0 10px; font-size: 16px; line-height: 1.25; }
+.cookie-banner p, .cookie-dialog p { margin: 0 0 8px; color: var(--muted-strong); font-size: 14px; }
+.cookie-banner a, .cookie-dialog a { color: var(--text); font-size: 14px; }
+.cookie-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.cookie-actions button { flex: 1 1 auto; min-height: 44px; padding: 10px 12px; border: 1px solid var(--border-strong); border-radius: 10px; color: var(--text); background: #fff; font: 600 14px var(--ipn-font-body); cursor: pointer; }
+.cookie-actions button:focus-visible, .cookie-settings:focus-visible, .cookie-dialog input:focus-visible { outline: 2px solid var(--blue-soft); outline-offset: 2px; }
+.cookie-dialog { width: min(560px, calc(100% - 32px)); max-height: 85dvh; padding: 24px; color: var(--text); background: var(--surface-raised); border: 1px solid var(--border-strong); border-radius: 16px; }
+.cookie-dialog::backdrop { background: #000b; }
+.cookie-option { display: flex; align-items: start; gap: 10px; margin: 18px 0; font-size: 14px; }
+.cookie-option input { flex: none; margin-top: 5px; accent-color: var(--blue-soft); }
+.cookie-status:empty { display: none; }
+.cap-rod .cookie-settings { margin-left: 6px; font: inherit; color: var(--a); }
+
+/* ===== Página de vendas do Kit (25/11/2026) ===== */
+.cap-kit-venda { margin: -96px 16px 0; z-index: 2; }
+.cap-modulos > div { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 14px; margin-top: 10px; }
+.cap-modulos b { flex: 0 0 52px; height: 52px; border-radius: 12px; background: var(--p); color: var(--s); font: 800 22px/52px var(--h); text-align: center; }
+.cap-modulos span { font: 500 15px/1.45 var(--f); color: var(--t); }
+.cap-modulos strong { display: block; font: 800 16px var(--h); color: var(--p); }
+.cap-passos { padding-left: 22px; font: 500 15.5px/1.5 var(--f); }
+.cap-passos li + li { margin-top: 8px; }
+details { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 16px; }
+details + details { margin-top: 8px; }
+summary { font: 700 15.5px var(--f); color: var(--p); cursor: pointer; }
+details p { font: 500 15px/1.5 var(--f); color: var(--m); margin-top: 8px; }
+.cap-btn[aria-disabled="true"] { background: #94A3B8; box-shadow: none; cursor: not-allowed; }
+
+/* Revisão 25/11: contraste, capas no celular e banner de cookies sem cobrir o botão de compra */
+.cap-campo input { border-color: #64748B; }
+.cap-kit .k2 b, .cap-kit .k3 b { color: #fff; }
+@media (max-width: 400px) {
+  .cap-kit .cap-livro em { display: none; }
+  .cap-kit .cap-livro b { margin-top: 8px; }
+  .cap-kit .cap-livro span { max-width: 58px; font-size: 10.5px; }
+}
+body:has(.cookie-banner:not([hidden])) { padding-bottom: 220px; }
