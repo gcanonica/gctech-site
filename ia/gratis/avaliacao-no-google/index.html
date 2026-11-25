@@ -65,25 +65,23 @@
       <h1 tabindex="-1">Pronto, <span class="cap-ok-nome"></span>! <span class="cap-ok-msg">O guia está no seu e-mail.</span></h1>
       <p class="cap-ok-dica">Não achou? Olha o spam. Ou <a href="../../arquivos/ia-pro-negocio-avaliacao-no-google.pdf" download>baixe agora aqui</a>.</p>
     </div>
-    <!-- Oferta do Kit: só aparece quando houver link de compra (KIT_URL no script). -->
+    <!-- Oferta do Google Meu Negócio em 1 tarde: só aparece quando houver link de compra (KIT_URL no script). -->
     <div class="cap-oferta" hidden>
-      <span class="cap-tag-oferta">⏳ OFERTA SÓ NESTA PÁGINA</span>
-      <h2 class="cap-oferta-titulo">Quer a IA trabalhando no resto do negócio? O Kit tem <mark>30 prompts + 20 mensagens</mark> prontas.</h2>
+      <span class="cap-tag-oferta">SÓ PARA QUEM PEGOU O GUIA</span>
+      <h2 class="cap-oferta-titulo">Avaliação é uma parte. <mark>E o perfil inteiro?</mark></h2>
       <div class="cap-kit" aria-hidden="true">
-        <div class="cap-livro k4"><em>IA PRO NEGÓCIO</em><b>20</b><span>mensagens prontas</span></div>
-        <div class="cap-livro k3"><em>IA PRO NEGÓCIO</em><b>5</b><span>passo a passos</span></div>
-        <div class="cap-livro k2"><em>IA PRO NEGÓCIO</em><b>30</b><span>prompts por tarefa</span></div>
-        <div class="cap-livro k1"><em>IA PRO NEGÓCIO</em><b>1</b><span>comece aqui</span></div>
+        <div class="cap-livro k1" style="left:24%"><em>IA PRO NEGÓCIO</em><b>10</b><span>etapas do guia</span></div>
+        <div class="cap-livro k2" style="left:46%"><em>IA PRO NEGÓCIO</em><b>11</b><span>mensagens de avaliação</span></div>
       </div>
       <ul class="cap-lista">
-        <li><b>30 prompts por tarefa:</b> atendimento, vendas, Instagram, avaliações e cobrança</li>
-        <li><b>5 passo a passos</b> com o caminho de cada tela, do começo ao fim</li>
-        <li><b>20 mensagens prontas</b> para copiar hoje</li>
-        <li>Funciona no <b>ChatGPT grátis</b>, pelo celular</li>
+        <li><b>Guia em 10 etapas:</b> categoria, descrição, fotos, serviços, horários e posts</li>
+        <li><b>11 mensagens</b> para pedir e responder avaliações boas, médias e ruins</li>
+        <li><b>Prompts</b> para a IA escrever a descrição, as respostas e os posts</li>
+        <li>Tudo em PDF. O Perfil da Empresa no Google é grátis</li>
       </ul>
       <div class="cap-preco"><s>R$&nbsp;37</s><b>R$&nbsp;27</b></div>
-      <p class="cap-micro">Preço exclusivo desta página. Na loja, o Kit custa R$ 37.</p>
-      <a class="cap-btn cap-btn-kit" href="#" rel="noopener">Quero o Kit por R$ 27</a>
+      <p class="cap-micro">Preço exclusivo desta página. Na loja, o Google Meu Negócio em 1 tarde custa R$&nbsp;37.</p>
+      <a class="cap-btn cap-btn-kit" href="#" rel="noopener">Quero o Google Meu Negócio em 1 tarde por R$ 27</a>
       <p class="cap-confia"><span>🔒 Pagamento pela Kiwify</span><span>Pix ou cartão</span><span>7 dias de garantia</span></p>
       <a class="cap-nao" href="../../arquivos/ia-pro-negocio-avaliacao-no-google.pdf" download>Não, obrigado. Só quero o material grátis.</a>
     </div>
@@ -99,7 +97,7 @@
     // Vazio = envio ainda não ligado.
     var ENDPOINT = "https://script.google.com/macros/s/AKfycbz2lvtyny-dHqE3ahMrmj_sM1e_2imtrpc5fjxEHgCUP4S2ZAwd6OmYyLyVJweZMW86/exec";
     // Checkout do Kit na Kiwify (preço de R$ 27 desta página). Vazio = oferta escondida até o Kit estar à venda.
-    var KIT_URL = ""; // fica vazio: o material desta isca leva a outro produto (não ao Kit IA)
+    var KIT_URL = "https://pay.kiwify.com.br/N5fz7iY"; // oferta de R$ 27 do Google Meu Negócio em 1 tarde (só nesta página)
     var variante = document.documentElement.getAttribute("data-v") || "a";
 
     function evento(nome, extra) {
@@ -176,7 +174,7 @@
             var oferta = ok.querySelector(".cap-oferta");
             var botaoKit = oferta.querySelector(".cap-btn-kit");
             botaoKit.href = KIT_URL;
-            botaoKit.addEventListener("click", function () { evento("click_kiwify", { product_slug: "kit_ia_pro_negocio" }); });
+            botaoKit.addEventListener("click", function () { evento("click_kiwify", { product_slug: "google_meu_negocio" }); });
             oferta.hidden = false;
             evento("oferta_view");
           }
